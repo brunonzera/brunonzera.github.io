@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="referencia_css" media="screen">
+    <title>Coleta de Dados</title>
+  </head>
+<body>
+<div class="campo">
+    <form>
+        <select id="firstDropdown" onchange="handleFirstDropdown()">
+            <option value="escolha1"><strong>Escolha a entrada de dados</strong></option>
+            <option value="perfilTabelado">Perfil Tabelado</option>
+            <option value="perfilCustomizado">Perfil Customizado</option>
+        </select>   
+    </form>
+</div>
+
+<div class="campo" id="tipoPerfilDiv" style="display: none;">
+    <select id="secondDropdown" onchange="handleSecondDropdown()" disabled>
+        <option value="escolha2">Escolher Perfil</option>
+        <option value="perfilIouH">Perfil I ou H</option>
+        <option value="perfilRetangularPreenchido">Perfil Retangular Preenchido</option>
+        <option value="perfilCircularPreenchido">Perfil Circular Preenchido</option>
+    </select>
+</div>
+
+<div class="campo" id="perfilEspecificoDiv" style="display: none;">
+    <h1>Dados da Viga</h1>
+    <select id="thirdDropdown" disabled>
+        <option disabled selected>Selecione o perfil</option>
+    </select>
+</div>
+
+<div class="dados" id="Dados_Concreto_Perfil_IouH" style="display: none;"> <!-- PERFIL TABELADO-->
+    <img src=Perfil_Revestido.PNG alt="Perfil Revestido" style="width: 350px; height: 350px;">
+    <form>
+        <h1>Dados do Pilar</h1>
+        <label for="fck">Fck (MPA):</label>
+        <select id="fck" name="fck" required>
+        <option value="" disabled selected>--</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        </select><br>
+
+        <label for="qtd_armadura">Quantidade de armadura longitudinal:</label>
+        <input type="number" id="qtd_armadura" name="qtd_armadura" required><br>
+
+        <label for="diam_armadura_long">Diâmetro da armadura longitudinal (mm):</label>
+        <select id="diam_armadura_long" name="diam_armadura_long" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="diam_armadura_transv">Diâmetro da armadura transversal (mm):</label>
+        <select id="diam_armadura_transv" name="diam_armadura_transv" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="esp_armadura_transv">Espaçamento da armadura transversal (mm):</label>
+        <input type="number" id="esp_armadura_transv" name="esp_armadura_transv" required><br>
+
+        <label for="cobrimento">Cobrimento (mm):</label>
+        <input type="number" id="cobrimento" name="cobrimento" required><br>
+    </form>
+</div>
+
+<div class="dados" id="Dados_Concreto_Perfil_Retangular" style="display: none;"><!-- PERFIL TABELADO-->
+    <img src=Perfil_Retangular_Preenchido.PNG alt="Perfil Revestido" style="width: 350px; height: 350px;">
+    <form>
+        <h1>Dados do Pilar</h1>
+        <label for="fck">Fck (MPA):</label>
+        <select id="fck" name="fck" required>
+        <option value="" disabled selected>--</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        </select><br>
+
+        <label for="qtd_armadura">Quantidade de armadura longitudinal:</label>
+        <input type="number" id="qtd_armadura" name="qtd_armadura" required><br>
+
+        <label for="diam_armadura_long">Diâmetro da armadura longitudinal (mm):</label>
+        <select id="diam_armadura_long" name="diam_armadura_long" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="diam_armadura_transv">Diâmetro da armadura transversal (mm):</label>
+        <select id="diam_armadura_transv" name="diam_armadura_transv" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="esp_armadura_transv">Espaçamento da armadura transversal (mm):</label>
+        <input type="number" id="esp_armadura_transv" name="esp_armadura_transv" required><br>
+    </form>
+</div>
+
+<div class="dados" id="Dados_Concreto_Perfil_Circular" style="display: none;"><!-- PERFIL TABELADO-->
+    <img src=Perfil_Circular_Preenchido.PNG alt="Perfil Revestido" style="width: 350px; height: 350px;">
+    <form>
+        <h1>Dados do Pilar</h1>
+        <label for="fck">Fck (MPA):</label>
+        <select id="fck" name="fck" required>
+        <option value="" disabled selected>--</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        </select><br>
+
+        <label for="qtd_armadura">Quantidade de armadura longitudinal:</label>
+        <input type="number" id="qtd_armadura" name="qtd_armadura" required><br>
+
+        <label for="diam_armadura_long">Diâmetro da armadura longitudinal (mm):</label>
+        <select id="diam_armadura_long" name="diam_armadura_long" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="diam_armadura_transv">Diâmetro da armadura transversal (mm):</label>
+        <select id="diam_armadura_transv" name="diam_armadura_transv" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="esp_armadura_transv">Espaçamento da armadura transversal (mm):</label>
+        <input type="number" id="esp_armadura_transv" name="esp_armadura_transv" required><br>
+    </form>
+</div>
+
+<div class="dados" id="Dados_Perfil_I_ou_H" style="display: none;"><!-- PERFIL CUSTOMIZADO-->
+    <img src=Perfil_Revestido.PNG alt="Perfil Revestido" style="width: 350px; height: 350px;">
+    <form>
+        <h1>Dados do Pilar</h1>
+        <label for="bc">bc (mm):</label>
+        <input type="number" id="bc" name="bc" required><br>
+
+        <label for="hc">hc (mm):</label>
+        <input type="number" id="hc" name="hc" required><br>
+
+        <label for="fck">Fck (MPA):</label>
+        <select id="fck" name="fck" required>
+        <option value="" disabled selected>--</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        </select><br>
+
+        <label for="qtd_armadura">Quantidade de armadura longitudinal:</label>
+        <input type="number" id="qtd_armadura" name="qtd_armadura" required><br>
+
+        <label for="diam_armadura_long">Diâmetro da armadura longitudinal (mm):</label>
+        <select id="diam_armadura_long" name="diam_armadura_long" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="diam_armadura_transv">Diâmetro da armadura transversal (mm):</label>
+        <select id="diam_armadura_transv" name="diam_armadura_transv" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="esp_armadura_transv">Espaçamento da armadura transversal (mm):</label>
+        <input type="number" id="esp_armadura_transv" name="esp_armadura_transv" required><br>
+
+        <label for="cobrimento">Cobrimento (mm):</label>
+        <input type="number" id="cobrimento" name="cobrimento" required><br>
+
+        <h1>Dados da Viga</h1>
+        <label for="tf">tf (mm):</label>
+        <input type="number" id="tf" name="tf" required><br>
+
+        <label for="bf">bf (mm):</label>
+        <input type="number" id="bf" name="bf" required><br>
+
+        <label for="h">h (mm):</label>
+        <input type="number" id="h" name="h" required><br>
+
+        <label for="tw">tw (mm):</label>
+        <input type="number" id="tw" name="tw" required><br>
+    </form>
+</div>
+
+<div class="dados" id="Dados_Perfil_Retangular_Preenchido" style="display: none;"><!-- PERFIL CUSTOMIZADO-->
+    <img src=Perfil_Retangular_Preenchido.PNG alt="Perfil Revestido" style="width: 350px; height: 350px;">
+    <form>
+        <h1>Dados do Pilar</h1>
+        <label for="ex">ex (mm):</label>
+        <input type="number" id="ex" name="ex" required><br>
+
+        <label for="ey">ey (mm):</label>
+        <input type="number" id="ey" name="ey" required><br>
+
+        <label for="fck">Fck (MPA):</label>
+        <select id="fck" name="fck" required>
+        <option value="" disabled selected>--</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        </select><br>
+
+        <label for="qtd_armadura">Quantidade de armadura longitudinal:</label>
+        <input type="number" id="qtd_armadura" name="qtd_armadura" required><br>
+
+        <label for="diam_armadura_long">Diâmetro da armadura longitudinal (mm):</label>
+        <select id="diam_armadura_long" name="diam_armadura_long" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="diam_armadura_transv">Diâmetro da armadura transversal (mm):</label>
+        <select id="diam_armadura_transv" name="diam_armadura_transv" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="esp_armadura_transv">Espaçamento da armadura transversal (mm):</label>
+        <input type="number" id="esp_armadura_transv" name="esp_armadura_transv" required><br>
+
+        <h1>Dados do Perfil</h1>
+        <label for="b1">b1(mm):</label>
+        <input type="number" id="b2" name="b2" required><br>
+
+        <label for="b2">b2 (mm):</label>
+        <input type="number" id="h1" name="h1" required><br>
+
+        <label for="t">t (mm):</label>
+        <input type="number" id="t" name="t" required><br>
+    </form>
+</div>
+
+<div class="dados" id="Dados_Perfil_Circular_Preenchido" style="display: none;"><!-- PERFIL CUSTOMIZADO-->
+    <img src=Perfil_Circular_Preenchido.PNG alt="Perfil Revestido" style="width: 350px; height: 350px;">
+    <form>
+        <h1>Dados do Pilar</h1>
+        <label for="ex">ex (mm):</label>
+        <input type="number" id="ex" name="ex" required><br>
+
+        <label for="ey">ey (mm):</label>
+        <input type="number" id="ey" name="ey" required><br>
+
+        <label for="fck">Fck (MPA):</label>
+        <select id="fck" name="fck" required>
+        <option value="" disabled selected>--</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+        <option value="35">35</option>
+        <option value="40">40</option>
+        </select><br>
+
+        <label for="qtd_armadura">Quantidade de armadura longitudinal:</label>
+        <input type="number" id="qtd_armadura" name="qtd_armadura" required><br>
+
+        <label for="diam_armadura_long">Diâmetro da armadura longitudinal (mm):</label>
+        <select id="diam_armadura_long" name="diam_armadura_long" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="diam_armadura_transv">Diâmetro da armadura transversal (mm):</label>
+        <select id="diam_armadura_transv" name="diam_armadura_transv" required>
+        <option value="" disabled selected>--</option>
+        <option value="5">5</option>
+        <option value="6.3">6.3</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12.5">12.5</option>
+        <option value="16">16</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="32">32</option>
+        </select><br>
+
+        <label for="esp_armadura_transv">Espaçamento da armadura transversal (mm):</label>
+        <input type="number" id="esp_armadura_transv" name="esp_armadura_transv" required><br>
+
+        <h1>Dados da Viga</h1>
+
+        <label for="t">t (mm):</label>
+        <input type="number" id="t" name="t" required><br>
+
+        <label for="D">D (mm):</label>
+        <input type="number" id="D" name="D" required><br>
+    </form>
+</div>
+
+<button type="submit" class="botao">Verificar</button>
+
+<script>
+    function handleFirstDropdown() {
+        var firstDropdown = document.getElementById("firstDropdown");
+        var secondDropdown = document.getElementById("secondDropdown");
+        var tipoPerfilDiv = document.getElementById("tipoPerfilDiv");
+        var perfilEspecificoDiv = document.getElementById("perfilEspecificoDiv");
+        var Dados_Concreto_Perfil_IouHDiv = 
+
+        secondDropdown.disabled = true;
+        secondDropdown.selectedIndex = 0;
+        tipoPerfilDiv.style.display = "none";
+        perfilEspecificoDiv.style.display = "none";
+
+        if (firstDropdown.value === "perfilTabelado") {
+            secondDropdown.disabled = false;
+            tipoPerfilDiv.style.display = "block";
+        } else if (firstDropdown.value === "perfilCustomizado") {
+            secondDropdown.disabled = false;
+            tipoPerfilDiv.style.display = "block";
+        handleSecondDropdown();
+        }
+    }
+
+    function handleSecondDropdown() {
+        var secondDropdown = document.getElementById("secondDropdown");
+        var perfilEspecificoDiv = document.getElementById("perfilEspecificoDiv");
+        var Dados_Perfil_I_ou_H = document.getElementById("Dados_Perfil_I_ou_H");
+        var Dados_Perfil_Retangular_Preenchido = document.getElementById("Dados_Perfil_Retangular_Preenchido");
+        var Dados_Perfil_Circular_Preenchido = document.getElementById("Dados_Perfil_Circular_Preenchido");
+
+        perfilEspecificoDiv.style.display = "none";
+        Dados_Perfil_I_ou_H.style.display = "none";
+        Dados_Perfil_Retangular_Preenchido.style.display = "none";
+        Dados_Perfil_Circular_Preenchido.style.display = "none";
+        Dados_Concreto_Perfil_IouH.style.display = "none";
+        Dados_Concreto_Perfil_Retangular.style.display = "none";
+        Dados_Concreto_Perfil_Circular.style.display = "none";
+
+        if (firstDropdown.value === "perfilTabelado" && secondDropdown.value === "perfilIouH") {         
+            perfilEspecificoDiv.style.display = "block";
+            Dados_Concreto_Perfil_IouH.style.display = "block";
+            var perfilEspecifico = secondDropdown.value;
+            createOptionsForPerfilEspecifico(perfilEspecifico);
+
+        } else if (firstDropdown.value === "perfilTabelado" && secondDropdown.value === "perfilRetangularPreenchido") {      
+            perfilEspecificoDiv.style.display = "block";
+            Dados_Concreto_Perfil_Retangular.style.display = "block";
+            var perfilEspecifico = secondDropdown.value;
+            createOptionsForPerfilEspecifico(perfilEspecifico);
+
+        } else if (firstDropdown.value === "perfilTabelado" && secondDropdown.value === "perfilCircularPreenchido") {     
+            perfilEspecificoDiv.style.display = "block";
+            Dados_Concreto_Perfil_Circular.style.display = "block";
+            var perfilEspecifico = secondDropdown.value;
+            createOptionsForPerfilEspecifico(perfilEspecifico);
+
+        } else if (firstDropdown.value === "perfilCustomizado" && secondDropdown.value === "perfilIouH") {
+            Dados_Perfil_I_ou_H.style.display = "block";
+
+        } else if (firstDropdown.value === "perfilCustomizado" && secondDropdown.value === "perfilRetangularPreenchido") {
+            Dados_Perfil_Retangular_Preenchido.style.display = "block";
+
+        } else if (firstDropdown.value === "perfilCustomizado" && secondDropdown.value === "perfilCircularPreenchido") {
+            Dados_Perfil_Circular_Preenchido.style.display = "block";
+        }
+    }
+
+    // Função para criar as opções de perfil específico com base no tipo selecionado
+    function createOptionsForPerfilEspecifico(perfilEspecifico) {
+        var thirdDropdown = document.getElementById("thirdDropdown");
+        thirdDropdown.innerHTML = "";
+
+        if (perfilEspecifico === "perfilIouH" && document.getElementById("firstDropdown").value === "perfilTabelado") {
+            var options = ["Perfil I ou H 1", "Perfil I ou H 2", "Perfil I ou H 3"];
+        } else if (perfilEspecifico === "perfilRetangularPreenchido" && document.getElementById("firstDropdown").value === "perfilTabelado") {
+            var options = ["Perfil Retangular Preenchido 1", "Perfil Retangular Preenchido 2", "Perfil Retangular Preenchido 3"];
+        } else if (perfilEspecifico === "perfilCircularPreenchido" && document.getElementById("firstDropdown").value === "perfilTabelado") {
+            var options = ["Perfil Circular Preenchido 1", "Perfil Circular Preenchido 2", "Perfil Circular Preenchido 3"];
+        }
+
+        for (var i = 0; i < options.length; i++) {
+            var option = document.createElement("option");
+            option.value = options[i];
+            option.text = options[i];
+            thirdDropdown.appendChild(option);
+        }
+
+        thirdDropdown.disabled = false;
+    }
+</script>
+</body>
+</html>
